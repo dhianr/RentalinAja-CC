@@ -8,15 +8,17 @@
 
   <link rel="stylesheet" href="css/style1.css">
   <script>
-    function login(){
+    function login() {
       let username = document.getElementById("uname").value;
       let password = document.getElementById("pw").value;
-
-      if(username == "admin" && password == "12345"){
-                document.getElementById("form").action = "index.html"
-            } else{
-                alert("Username atau Password yang Anda Masukkan Salah")
-            }
+    
+      if (username === "admin" && password === "12345") {
+        window.location.href = "admin/index.html"; // 
+      } else {
+        alert("Username atau Password yang Anda Masukkan Salah");
+      }
+    
+      return false; // cegah form kirim ke server
     }
   </script>
 
@@ -38,7 +40,7 @@
   <div class="card">
     <div class="card-body login-card-body">
 
-      <form method="post" id="form">
+      <form id="form" onsubmit="return login()">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Username" id="uname">
           <div class="input-group-append">
